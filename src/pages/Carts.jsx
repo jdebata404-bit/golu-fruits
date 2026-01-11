@@ -62,7 +62,7 @@ const totalQuantity = cartItem.reduce((sum, item) => sum + item.quantity, 0);
               >
                 <div className="w-22 h-22 bg-white rounded overflow-hidden">
                   <img
-                  onClick={()=>navigate(`/products/${item.id}`)}
+                    onClick={() => navigate(`/products/${item.id}`)}
                     className="h-full w-full object-cover"
                     src={item.img}
                     alt=""
@@ -110,7 +110,7 @@ const totalQuantity = cartItem.reduce((sum, item) => sum + item.quantity, 0);
             <div className="flex justify-between w-full sm:w-52 text-white">
               <span className="text-xl">Grand Total:</span>
               <span className="text-2xl font-bold text-yellow-400">
-                ₹ {grandTotal}
+                ₹ {Math.round({grandTotal})}
               </span>
             </div>
 
