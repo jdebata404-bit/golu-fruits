@@ -1,1 +1,1 @@
-hosted link- https://golu-fruits.vercel.app/support
+Hosted link - https://golu-fruits.vercel.app/
