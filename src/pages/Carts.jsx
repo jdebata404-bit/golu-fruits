@@ -110,7 +110,7 @@ const totalQuantity = cartItem.reduce((sum, item) => sum + item.quantity, 0);
             <div className="flex justify-between w-full sm:w-52 text-white">
               <span className="text-xl">Grand Total:</span>
               <span className="text-2xl font-bold text-yellow-400">
-                ₹ {Math.round({grandTotal})}
+                ₹ {Math.round(grandTotal)}
               </span>
             </div>
 
