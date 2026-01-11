@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react"; // Added useState
 import { useNavigate } from "react-router-dom";
 import {
   FaHeadset,
@@ -11,6 +11,24 @@ import {
 
 function Support() {
   const navigate = useNavigate();
+
+  // Simple state to handle form fields like your style
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [orderId, setOrderId] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Logic for submission
+    alert(`Thank you ${name}! Message sent successfully!`);
+
+    // Clear form
+    setName("");
+    setEmail("");
+    setOrderId("");
+    setMessage("");
+  };
 
   const commonTopics = [
     {
@@ -34,7 +52,7 @@ function Support() {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-200 font-sans">
+    <div className="min-h-screen pb-10 bg-zinc-200 font-sans">
       {/* Hero Section */}
       <div className="bg-slate-800 py-16 px-6 text-center text-white">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -68,30 +86,46 @@ function Support() {
             <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
               <FaHeadset className="text-green-500" /> Send us a message
             </h2>
-            <form className="space-y-4 text-black">
+
+            {/* Moved onSubmit here where it belongs */}
+            <form onSubmit={handleSubmit} className="space-y-4 text-black">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input
                   type="text"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   placeholder="Full Name"
                   className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
                 />
                 <input
                   type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email Address"
                   className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
                 />
               </div>
               <input
                 type="text"
+                value={orderId}
+                onChange={(e) => setOrderId(e.target.value)}
                 placeholder="Order ID (Optional)"
                 className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
               />
               <textarea
                 rows="5"
+                required
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 placeholder="How can we help you?"
                 className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
               ></textarea>
-              <button className="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition shadow-lg shadow-green-200">
+              <button
+                type="submit"
+                className="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition shadow-lg shadow-green-200"
+              >
                 Send Message
               </button>
             </form>
@@ -142,7 +176,7 @@ function Support() {
 
             <button
               onClick={() => navigate("/")}
-              className="text-green-600 cursor-pointer font-semibold flex items-center gap-2 hover:gap-4 transition-all"
+              className="text-green-600 w-fit cursor-pointer font-semibold flex items-center gap-2 hover:gap-4 transition-all"
             >
               ← Back to Fruit Market
             </button>
